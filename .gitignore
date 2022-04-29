@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+Mazer-sdl/depedencies/SDL2/*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
