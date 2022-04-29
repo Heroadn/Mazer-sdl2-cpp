@@ -152,25 +152,6 @@ public:
         return y < 0 || x < 0 || x >= width || y >= height;
     }
 
-    bool is_open(int index){
-        switch (m_grid[index].getType())
-        {
-        case Tile::Cell:
-            return true;
-        case Tile::BlockTrue:
-            return true;
-        case Tile::BlockFalse:
-            return false;
-        default:
-            return true;
-        }
-    }
-
-    const uint8_t& operator[](std::size_t i)
-    {
-        return m_grid[i].getType();
-    }
-
     uint8_t* tile_to_pixel()
     {
         for (int i = 0; i < m_width * m_height; i++)
