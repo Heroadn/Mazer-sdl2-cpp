@@ -6,7 +6,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
 
 # Adicione a origem ao executável deste projeto.
-add_executable (Mazer-sdl WIN32 "Mazer-sdl.cpp" "Mazer-sdl.h" "Maze.h"  "Tile.h" "Graphics.h" "Graphics.cpp")
+add_executable (Mazer-sdl WIN32 "Mazer-sdl.cpp" "Mazer-sdl.h" "Maze.h"  "Tile.h" "Graphics.h" "Graphics.cpp" "Coordinate.h")
 
 
 #SDL2
@@ -14,14 +14,3 @@ set(SDL2_PATH "depedencies/SDL2")
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 target_link_libraries(Mazer-sdl ${SDL2_LIBRARY})
-
-# Compiler flags
-
-# Linker
-#target_link_options(Mazer-sdl PRIVATE "/SUBSYSTEM:WINDOWS")
-
-
-#target_include_directories(Mazer-sdl PUBLIC ${SDL_INCLUDE})
-
-
-# TODO: Adicione testes e instale destinos, se necessário.

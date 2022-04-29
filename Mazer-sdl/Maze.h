@@ -17,28 +17,16 @@ private:
     int m_width;
     int m_height;
 public:
-    Maze(int width, 
-         int height, 
+    Maze(int width,
+         int height,
          Tile start)
+        :m_width(width),
+        m_height(height), 
+        m_start(start)
     { 
-        setMaze(width, height, start);
-        srand(time(0));
-    }
-
-    ~Maze() { 
-        delete[] m_grid;
-        delete[] m_pixels;
-    }
-
-    void setMaze(int width, 
-                 int height, 
-                 Tile start)
-    {
-        m_width  = width; 
-        m_height = height;
-        m_start  = start;
-        m_grid   = new Tile[width * height];
+        m_grid = new Tile[width * height];
         m_pixels = new uint8_t[width * height];
+        srand(time(0));
 
         int index = start.getX() + (start.getY() * m_width);
 
@@ -48,11 +36,16 @@ public:
             start.setType(Tile::BlockFalse);
             m_grid[index].setType(Tile::BlockFalse);
         }
-        
+
         start.setVisited(true);
         m_track.push(start);
         m_cursor = start;
         fill_grid();
+    }
+
+    ~Maze() { 
+        //delete[] m_grid;
+        //delete[] m_pixels;
     }
 
     void fill_grid() {
@@ -183,8 +176,8 @@ public:
         for (int i = 0; i < m_width * m_height; i++)
             m_pixels[i] = m_grid[i].getType();
 
-        int index = m_cursor.getX() + (m_cursor.getY() * m_width);
-        m_pixels[index] = Tile::Cursor;
+        //int index = m_cursor.getX() + (m_cursor.getY() * m_width);
+        //m_pixels[index] = Tile::Cursor;
 
         return m_pixels;
     }
@@ -193,5 +186,4 @@ public:
     int getHeight() { return m_height; }
     Tile getCursor() { return m_cursor; }
     Tile* getTiles() { return m_grid; }
-    
 };

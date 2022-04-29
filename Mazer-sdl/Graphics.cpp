@@ -44,7 +44,6 @@ Graphics::~Graphics()
 	SDL_Quit();
 }
 
-
 void Graphics::draw_pixel(SDL_Rect rect,
 						  uint8_t colors[])
 {
@@ -83,6 +82,28 @@ bool Graphics::draw_sprite(uint8_t offset_x,
 						   uint8_t width,
 						   uint8_t height,
 						   uint8_t sprite[])
+{
+	uint8_t x = 0, y = 0, i = 0;
+
+	for (int r = 0; r < height; r++)//height
+	{
+		for (int c = 0; c < width; c++)//width
+		{
+			x = (offset_x + c) % INTERNAL_WIDTH;
+			y = (offset_y + r) % INTERNAL_HEIGHT;
+
+			i = (r * width) + c;
+			m_screen_pixels[x][y] = sprite[i];
+		}
+	}
+	return false;
+}
+
+bool Graphics::draw_sprite(uint8_t offset_x,
+							uint8_t offset_y,
+							uint8_t width,
+							uint8_t height,
+							std::vector<uint8_t> &sprite)
 {
 	uint8_t x = 0, y = 0, i = 0;
 

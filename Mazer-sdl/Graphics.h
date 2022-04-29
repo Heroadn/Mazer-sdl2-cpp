@@ -1,6 +1,7 @@
 #include <SDL.h>
-#define INTERNAL_WIDTH  64
-#define INTERNAL_HEIGHT 64
+#include <vector>
+#define INTERNAL_WIDTH  33
+#define INTERNAL_HEIGHT 33
 #define CHANNELS 3
 #define LAYERS 4
 
@@ -16,7 +17,7 @@ public:
 	~Graphics();
 
 	void draw_pixel(SDL_Rect rect,
-							  uint8_t colors[]);
+				    uint8_t colors[]);
 
 	//
 	void draw_screen();
@@ -36,6 +37,12 @@ public:
 					 uint8_t width,
 					 uint8_t height,
 					 uint8_t sprite[]);
+
+	bool draw_sprite(uint8_t offset_x,
+		uint8_t offset_y,
+		uint8_t width,
+		uint8_t height,
+		std::vector<uint8_t> &sprite);
 
 	//
 	SDL_Surface* init_screen();
