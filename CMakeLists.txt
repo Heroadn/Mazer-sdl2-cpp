@@ -2,7 +2,6 @@
 # e inclua subprojetos aqui.
 #
 cmake_minimum_required (VERSION 3.8)
-
 project ("Mazer-sdl")
 
 # Inclua subprojetos.
