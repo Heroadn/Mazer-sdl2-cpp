@@ -45,7 +45,7 @@ Graphics::~Graphics()
 }
 
 void Graphics::draw_pixel(SDL_Rect rect,
-						  uint8_t colors[])
+					      uint8_t colors[])
 {
 	uint32_t color = SDL_MapRGB(m_screen->format,
 								colors[0],
@@ -77,7 +77,7 @@ void Graphics::draw_screen()
 }
 
 //
-bool Graphics::draw_sprite(uint8_t offset_x,
+void Graphics::draw_sprite(uint8_t offset_x,
 						   uint8_t offset_y,
 						   uint8_t width,
 						   uint8_t height,
@@ -96,14 +96,13 @@ bool Graphics::draw_sprite(uint8_t offset_x,
 			m_screen_pixels[x][y] = sprite[i];
 		}
 	}
-	return false;
 }
 
-bool Graphics::draw_sprite(uint8_t offset_x,
-							uint8_t offset_y,
-							uint8_t width,
-							uint8_t height,
-							std::vector<uint8_t> &sprite)
+void Graphics::draw_sprite(uint8_t offset_x,
+						   uint8_t offset_y,
+						   uint8_t width,
+						   uint8_t height,
+						   std::vector<uint8_t> &sprite)
 {
 	uint8_t x = 0, y = 0, i = 0;
 
@@ -118,7 +117,6 @@ bool Graphics::draw_sprite(uint8_t offset_x,
 			m_screen_pixels[x][y] = sprite[i];
 		}
 	}
-	return false;
 }
 
 //
@@ -134,11 +132,6 @@ void Graphics::clear()
 void Graphics::update()
 {
 	SDL_UpdateWindowSurface(m_window);
-}
-
-//
-void Graphics::get_screen(uint8_t screen[INTERNAL_WIDTH][INTERNAL_HEIGHT])
-{
 }
 
 //

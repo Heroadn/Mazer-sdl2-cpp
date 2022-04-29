@@ -1,13 +1,30 @@
+/*
+Class responsible for initiating things like SDL,
+and drawing sprites in the screen
+uses a variation of the graphics lib for chip8
+<https://github.com/Heroadn/Chip8Emu/>
+*/
+
 #include <SDL.h>
 #include <vector>
-#define INTERNAL_WIDTH  33
-#define INTERNAL_HEIGHT 33
-#define CHANNELS 3
-#define LAYERS 4
+#define INTERNAL_WIDTH  33		//width of internal pixel screen
+#define INTERNAL_HEIGHT 33		//height of internal pixel screen
+#define CHANNELS 3				//color chanels like RGB
+#define LAYERS 5				//fixed amount of pallets <- should be dinamic
 
 class Graphics
 {
 public:
+	/**
+	 * Constructor.
+	 *
+	 * @param screen_width.					width of the screen
+	 * @param screen_height.				height of the screen
+	 * @param bits_per_pixel.				bits per pixel
+	 * @param title.						array of pixels in "hexadecimal".
+	 * @param colors[LAYERS][CHANNELS].		pallet of the sprites
+	 * sprites can use it as index for colors
+	 */
 	Graphics(const int screen_width,
 			 const int screen_height,
 			 const int bits_per_pixel,
@@ -16,39 +33,63 @@ public:
 
 	~Graphics();
 
-	void draw_pixel(SDL_Rect rect,
-				    uint8_t colors[]);
-
-	//
+	/**
+	 * Draw all pixels in the screen
+	 */
 	void draw_screen();
 
-	//
+	/**
+	 * Clear pixels in the screen
+	 */
 	void clear();
 
-	//
+	/**
+	 * Update buffer
+	 */
 	void update();
 
-	//
-	void get_screen(uint8_t screen[INTERNAL_WIDTH][INTERNAL_HEIGHT]);
-
-	//
-	bool draw_sprite(uint8_t offset_x,
+	/**
+	 * Add sprite pixels to screen.
+	 *
+	 * @param offset_x. where to put in x axis
+	 * @param offset_y. where to put in y axis
+	 * @param width.	width of the sprite
+	 * @param height.	height of the sprite
+	 * @param sprite[]. array of pixels in "hexadecimal".
+	 * sprite will be read as "bidimensional[x + y * width]" 
+	 * ex: [11112222]   
+	 *	   [10012112]
+	 *	   [10012111]
+	 *	   [11112222]
+	 * "0, 1, 2" are indexes for colors
+	 */
+	void draw_sprite(uint8_t offset_x,
 					 uint8_t offset_y,
 					 uint8_t width,
 					 uint8_t height,
 					 uint8_t sprite[]);
 
-	bool draw_sprite(uint8_t offset_x,
-		uint8_t offset_y,
-		uint8_t width,
-		uint8_t height,
-		std::vector<uint8_t> &sprite);
+	/**
+	 * Add sprite pixels to screen.
+	 *
+	 * @param offset_x
+	 * @param offset_y.
+	 * @param width.
+	 * @param height.
+	 * @param sprite[]. vector of pixels in "hexadecimal"
+	 * sprite will be read as "bidimensional[x + y * width]" 
+	 * ex: [11112222]   
+	 *	   [10012112]
+	 *	   [10012111]
+	 *	   [11112222]
+	 * "0, 1, 2" are indexes for colors
+	 */
+	void draw_sprite(uint8_t offset_x,
+					 uint8_t offset_y,
+					 uint8_t width,
+					 uint8_t height,
+					 std::vector<uint8_t> &sprite);
 
-	//
-	SDL_Surface* init_screen();
-
-	//
-	SDL_Window* init_window(const char* title);
 private:
 	SDL_Surface* m_screen;
 	SDL_Window* m_window;
@@ -61,4 +102,13 @@ private:
 
 	uint8_t m_screen_pixels[INTERNAL_WIDTH][INTERNAL_HEIGHT];
 	uint8_t m_colors[LAYERS][CHANNELS];
+
+	//
+	SDL_Surface* init_screen();
+
+	//
+	SDL_Window* init_window(const char* title);
+
+	void draw_pixel(SDL_Rect rect,
+					uint8_t colors[]);
 };
