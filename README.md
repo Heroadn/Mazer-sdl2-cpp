@@ -4,4 +4,4 @@
 
 # Build
 change in "Mazer-sdl/CMakeLists.txt"
-set(SDL2_PATH "Your SDL FOLDER")
+set(SDL2_PATH -> "Your SDL FOLDER")
