@@ -31,10 +31,6 @@ public:
         m_state = { visited, type };
     }
 
-    operator uint8_t() {
-        return getType();
-    };
-
     int getType() { return m_state.type; }
     int getVisited() { return m_state.visited; }
     int getX() { return m_coordiante.x; }

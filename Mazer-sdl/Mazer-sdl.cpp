@@ -12,8 +12,7 @@
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 544
 
-
-//Main loop flag
+ //Main loop flag
 bool quit = false;
 
 void input()
@@ -49,12 +48,12 @@ int WinMain(int argc, char* argv[])
     Maze maze2(MAZE_WIDTH, MAZE_HEIGHT, Tile(0, 1));
     Maze maze3(MAZE_WIDTH, MAZE_HEIGHT, Tile(0, 1));
     Maze maze4(MAZE_WIDTH, MAZE_HEIGHT, Tile(0, 1));
+    Graphics graph(200, 200, 16, color, "SDL");
 
     uint32_t last = 0;
     uint32_t now = 0;
     uint32_t delay = 0;
     uint32_t ticks_per_sec = 1000 / 30;
-    Graphics graph(200,  200, 16, color, "SDL");
 
     //While application is running
     while (!quit)
@@ -65,10 +64,10 @@ int WinMain(int argc, char* argv[])
         {
             graph.clear();
 
-            maze.generate();
-            maze2.generate();
-            maze3.generate();
-            maze4.generate();
+            maze.generate_step();
+            maze2.generate_step();
+            maze3.generate_step();
+            maze4.generate_step();
 
             graph.draw_sprite(maze.getWidth(), 0, maze2.getWidth(), maze2.getHeight(), maze2.tile_to_pixel());
             graph.draw_sprite(0, 0, maze.getWidth(), maze.getHeight(), maze.tile_to_pixel());

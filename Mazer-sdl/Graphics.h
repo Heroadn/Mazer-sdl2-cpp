@@ -10,7 +10,7 @@ uses a variation of the graphics lib for chip8
 #define INTERNAL_WIDTH  33		//width of internal pixel screen
 #define INTERNAL_HEIGHT 33		//height of internal pixel screen
 #define CHANNELS 3				//color chanels like RGB
-#define LAYERS 5				//fixed amount of pallets <- should be dinamic
+#define LAYERS 5				//fixed amount of pallets <- should be dynamic
 
 class Graphics
 {
@@ -49,18 +49,18 @@ public:
 	void update();
 
 	/**
-	 * Add sprite pixels to screen.
+	 * Add pixels of sprite to the screen.
 	 *
 	 * @param offset_x. where to put in x axis
 	 * @param offset_y. where to put in y axis
 	 * @param width.	width of the sprite
 	 * @param height.	height of the sprite
-	 * @param sprite[]. array of pixels in "hexadecimal".
-	 * sprite will be read as "bidimensional[x + y * width]" 
-	 * ex: [11112222]   
-	 *	   [10012112]
-	 *	   [10012111]
-	 *	   [11112222]
+	 * @param sprite[]. array of pixels, they are indexes to the pallet(coloring).
+	 * sprites will be read as "bidimensional[x + y * width]" 
+	 * ex: 11112222   
+	 *	   10012112
+	 *	   10012111
+	 *	   11112222
 	 * "0, 1, 2" are indexes for colors
 	 */
 	void draw_sprite(uint8_t offset_x,
@@ -70,18 +70,18 @@ public:
 					 uint8_t sprite[]);
 
 	/**
-	 * Add sprite pixels to screen.
+	 * Add pixels of sprite to the screen.
 	 *
 	 * @param offset_x
 	 * @param offset_y.
 	 * @param width.
 	 * @param height.
-	 * @param sprite[]. vector of pixels in "hexadecimal"
-	 * sprite will be read as "bidimensional[x + y * width]" 
-	 * ex: [11112222]   
-	 *	   [10012112]
-	 *	   [10012111]
-	 *	   [11112222]
+	 * @param sprite[]. vector of pixels, they are indexes to the pallet(coloring).
+	 * sprites will be read as "bidimensional[x + y * width]" 
+	 * ex: 11112222   
+	 *	   10012112
+	 *	   10012111
+	 *	   11112222
 	 * "0, 1, 2" are indexes for colors
 	 */
 	void draw_sprite(uint8_t offset_x,
