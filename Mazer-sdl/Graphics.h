@@ -34,19 +34,19 @@ public:
 	~Graphics();
 
 	/**
-	 * Draw all pixels in the screen
-	 */
-	void draw_screen();
-
-	/**
 	 * Clear pixels in the screen
 	 */
 	void clear();
 
 	/**
-	 * Update buffer
+	 * render screen
 	 */
-	void update();
+	void render();
+
+	/**
+	 * Check input, like close request
+	 */
+	void input();
 
 	/**
 	 * Add pixels of sprite to the screen.
@@ -90,6 +90,8 @@ public:
 					 uint8_t height,
 					 std::vector<uint8_t> &sprite);
 
+	bool is_close_request();
+
 private:
 	SDL_Surface* m_screen;
 	SDL_Window* m_window;
@@ -99,6 +101,7 @@ private:
 	int m_pixel_width;
 	int m_pixel_height;
 	int m_bits_per_pixel;
+	int m_is_close_request;
 
 	uint8_t m_screen_pixels[INTERNAL_WIDTH][INTERNAL_HEIGHT];
 	uint8_t m_colors[LAYERS][CHANNELS];
@@ -109,6 +112,23 @@ private:
 	//
 	SDL_Window* init_window(const char* title);
 
-	void draw_pixel(SDL_Rect rect,
+	/**
+	 * Draw all pixels from buffer to the screen
+	 */
+	void draw_buffer();
+
+
+	/**
+	 * Draw a pixel into the buffer
+	 */
+	void draw_pixel(int x, 
+					int y, 
+					uint8_t color);
+
+	/**
+	 * Draw a pixel pixel into the screen
+	 */
+	void fill_rect(SDL_Surface* screen,
+					SDL_Rect* rect,
 					uint8_t colors[]);
 };
