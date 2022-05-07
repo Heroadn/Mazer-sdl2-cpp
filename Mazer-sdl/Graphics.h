@@ -41,12 +41,12 @@ public:
 	/**
 	 * render screen
 	 */
-	void render();
+	void render();//
 
 	/**
 	 * Check input, like close request
 	 */
-	void input();
+	void input();//
 
 	/**
 	 * Add pixels of sprite to the screen.
