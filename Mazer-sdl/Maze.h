@@ -1,6 +1,10 @@
+#ifndef MAZE_H
+#define MAZE_H
+
 #include <vector>
 #include <stack>
 #include <time.h>
+#include <cstdint>
 #include "Tile.h"
 
 class Maze
@@ -78,3 +82,5 @@ public:
     int getHeight() { return m_height; }
     Tile getCursor() { return m_cursor; }
 };
+
+#endif

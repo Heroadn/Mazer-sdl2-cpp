@@ -1,4 +1,5 @@
 #include "Maze.h"
+#include <stdlib.h> 
 
 Maze::Maze(int width,
            int height,

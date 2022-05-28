@@ -1,3 +1,6 @@
+#ifndef TILE_H
+#define TILE_H
+
 class Tile
 {
 public:
@@ -49,3 +52,5 @@ private:
         Type type;
     } m_state;
 };
+
+#endif

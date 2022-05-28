@@ -363,3 +363,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Mazer-sdl/Dependencies/SDL2
+/CMakeFiles
+/Mazer-sdl/Dependencies/SDL_ttf
+/Mazer-sdl/CMakeFiles
