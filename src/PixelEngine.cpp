@@ -115,4 +115,13 @@ void PixelEngine::mazeTobuffer(int ox, int oy, Maze& maze)
 				oy + y,
 				maze.grid()[x + y * maze.getWidth()].getType());
 	}
+
+	int cx = maze.getCursor().getX();
+	int cy = maze.getCursor().getY();
+
+	mbBuffer.addPixel(
+		ox + cx,
+		oy + cy,
+		Tile::Cursor);
+	
 }
