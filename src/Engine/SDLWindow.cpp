@@ -6,14 +6,16 @@
 #include "SDLWindow.h"
 #include "SDLInput.h"
 #include "SDLDrawing.h"
+#include <iostream>
 
 #define FPS 30
 
 struct SDLWindow::Impl
 {
 public:
-	SDL_Surface* m_screen;
-	SDL_Window* m_window;
+	SDL_Window*   m_window;
+	SDL_Renderer* m_renderer;
+
 
 	int m_screen_width;
 	int m_screen_height;
@@ -43,10 +45,27 @@ public:
 		//create screen and window
 		m_window = create_window(
 			m_screen_width,
-			m_screen_width,
+			m_screen_height,
 			title);
 
-		m_screen = create_screen();
+		m_renderer = create_renderer(m_window);
+
+	}
+
+	SDL_Renderer* create_renderer(SDL_Window *window)
+	{
+		SDL_Renderer* renderer = SDL_CreateRenderer(
+			window,
+			-1,
+			SDL_RENDERER_SOFTWARE);
+
+		if (renderer == NULL)
+		{
+			std::cout << "ERROR: " << SDL_GetError() << std::endl;
+			exit(EXIT_FAILURE);
+		}
+
+		return renderer;
 	}
 
 	~Impl()
@@ -168,17 +187,12 @@ void SDLWindow::run(IEngine *engine)
 	uint32_t id = SDL_GetWindowID(mImpl->m_window);
 
 	SDLInput sdlInput;
-	SDL_Renderer* renderer = SDL_CreateRenderer(
-		mImpl->m_window, 
-		-1, 
-		SDL_RENDERER_SOFTWARE);
-
 	SDLDrawing sdlDrawing(
-		renderer,
+		mImpl->m_renderer,
 		mImpl->m_screen_width,
 		mImpl->m_screen_height);
 	
-
+	
 	while (sdlInput.isCloseRequest() == false)
 	{
 		sdlInput.poll();

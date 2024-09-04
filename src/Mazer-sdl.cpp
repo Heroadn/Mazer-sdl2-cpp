@@ -23,16 +23,9 @@
 int main(int argc, char* argv[])
 {
 	std::cout << "WHY SO SERIOUS;)";
-
-    PixelBuffer buffer(32, 32);
-    buffer.addPallet(0xaa, 0xaa, 0xaa);   //0 -> background ->Void
-    buffer.addPallet(0x31, 0x35, 0x3f);   //1 -> Cell
-    buffer.addPallet(0x31, 0x35, 0x3f);   //2 -> BlockFalse
-    buffer.addPallet(0xf4, 0xf5, 0xf4);   //3 -> BlockTrue
-    buffer.addPallet(0xc0, 0xb8, 0x9b);     //4 -> Cursor
  
     SDLWindow window(SCREEN_WIDTH, SCREEN_HEIGHT, 16, "SDL");
-    IEngine* engine= new PixelEngine(&buffer);
+    IEngine* engine= new PixelEngine();
     window.run(engine);
 
 	return 0;

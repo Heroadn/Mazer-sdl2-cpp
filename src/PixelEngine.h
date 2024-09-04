@@ -5,7 +5,7 @@
 class PixelEngine : public IEngine
 {
 public:
-	PixelEngine(PixelBuffer* buffer);
+	PixelEngine();
 
 	~PixelEngine();
 
@@ -17,11 +17,13 @@ public:
 
 	void input(IInput *input);
 
-	static IEngine* create(PixelBuffer* buffer) { return new PixelEngine(buffer); }
+	static IEngine* create() { return new PixelEngine(); }
 private:
-	PixelBuffer *mbBuffer;
+	PixelBuffer mbBuffer;
 	Maze mMaze;
 	Maze mMaze2;
 	Maze mMaze3;
 	Maze mMaze4;
+
+	void mazeTobuffer(int ox, int oy, Maze& maze);
 };

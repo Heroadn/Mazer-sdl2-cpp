@@ -1,4 +1,5 @@
 #include "SDLDrawing.h"
+#include <iostream>
 
 SDLDrawing::SDLDrawing(
 	SDL_Renderer* renderer,

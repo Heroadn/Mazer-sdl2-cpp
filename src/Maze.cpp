@@ -8,7 +8,6 @@ Maze::Maze(int width,
                          m_start(start)
 {
     m_grid = new Tile[width * height];
-    m_pixels = new uint8_t[width * height];
     srand(time(0));
 
     int index = start.getX() + (start.getY() * m_width);
@@ -127,13 +126,8 @@ bool Maze::is_out_bounds(int x, int y, int width, int height) {
     return y < 0 || x < 0 || x >= width || y >= height;
 }
 
-uint8_t* Maze::tile_to_pixel()
+Tile* Maze::grid()
 {
-    for (int i = 0; i < m_width * m_height; i++)
-        m_pixels[i] = m_grid[i].getType();
-
-    //int index = m_cursor.getX() + (m_cursor.getY() * m_width);
-    //m_pixels[index] = Tile::Cursor;
-
-    return m_pixels;
+    return m_grid;
 }
+

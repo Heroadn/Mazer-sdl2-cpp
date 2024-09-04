@@ -6,15 +6,14 @@
 #include <time.h>
 #include <cstdint>
 #include "Tile.h"
+#include <functional>
 
 class Maze
 {
 private:
     std::stack<Tile> m_track;       //used to keep track of the path
     std::vector<Tile> m_unvisited;
-
     Tile* m_grid;                   //tile representation of grid
-    uint8_t* m_pixels;              //pixel representation of grid
 
     Tile m_start;                   //where to start in the grid
     Tile m_cursor;                  //current location in the grid
@@ -76,7 +75,10 @@ public:
      * the representation of tiles in pixels
      * @return the representation of 'm_grid' for pixels
      */
-    uint8_t* tile_to_pixel();
+    Tile* grid();
+
+    void iterate(
+        std::function<void(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b)> onPixel);
 
     int getWidth() { return m_width; }
     int getHeight() { return m_height; }
