@@ -13,6 +13,13 @@ PixelEngine::PixelEngine()
 	mMaze4(Maze(MAZE_WIDTH, MAZE_HEIGHT, Tile(0, 1))),
 	mbBuffer(PixelBuffer(32, 32))
 {
+	mbBuffer.addPallet({
+		{ 0x0f, 0x11, 0x08}, //0 -> background ->Void 
+		{ 0x24, 0x19, 0x09 }, //1 -> Cell
+		{ 0x31, 0x35, 0x3f }, //2 -> BlockFalse
+		{ 0xf4, 0xf5, 0xf4 }, //3 -> BlockTrue
+		{ 0x64, 0x58, 0x53 }  //4 -> Cursor
+		});
 
 	mbBuffer.addPallet({
 		{ 0xaa, 0xaa, 0xaa }, //0 -> background ->Void 
