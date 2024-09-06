@@ -19,9 +19,15 @@ public:
 
 	static IEngine* create() { return new PixelEngine(); }
 private:
-	PixelBuffer *mbBuffer;
+	struct Vector2i
+	{
+		int x = 0;
+		int y = 0;
+	};
+
+	PixelBuffer mbBuffer;
 	std::vector<Maze> mazes;
-	std::vector<std::tuple<int, int>> positions;
+	std::vector<Vector2i> positions;
 
 	int nMazesWidth  = 0;
 	int nMazesHeight = 0;
