@@ -9,6 +9,10 @@ public:
 	virtual ~IWindow() = 0;
 
 	virtual void run(IEngine* graphics) = 0;
+
+	virtual int sizeWidth() = 0;
+
+	virtual int sizeHeight() = 0;
 };
 
 inline IWindow::~IWindow() {}

@@ -30,7 +30,8 @@ public:
 	 */
 	PixelBuffer(
 		const int width,
-		const int height) : mWidth(width),
+		const int height) 
+		: mWidth(width),
 		mHeight(height),
 		mIndex(0)
 	{

@@ -23,6 +23,10 @@ public:
 	~SDLWindow();
 
 	void run(IEngine* graphics);
+
+	int sizeWidth();
+
+	int sizeHeight();
 private:
 	SDLWindow(SDLWindow  const&) = delete;
 

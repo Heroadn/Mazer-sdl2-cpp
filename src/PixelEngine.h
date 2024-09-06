@@ -19,11 +19,13 @@ public:
 
 	static IEngine* create() { return new PixelEngine(); }
 private:
-	PixelBuffer mbBuffer;
-	Maze mMaze;
-	Maze mMaze2;
-	Maze mMaze3;
-	Maze mMaze4;
+	PixelBuffer *mbBuffer;
+	std::vector<Maze> mazes;
+	std::vector<std::tuple<int, int>> positions;
+
+	int nMazesWidth  = 0;
+	int nMazesHeight = 0;
+	int nMazes = 0;
 
 	void mazeTobuffer(int ox, int oy, Maze& maze);
 };

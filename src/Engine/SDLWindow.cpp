@@ -210,3 +210,13 @@ void SDLWindow::run(IEngine *engine)
 		mImpl->sleep(delay);
 	}
 }
+
+int SDLWindow::sizeWidth()
+{
+	return this->mImpl->m_screen_width;
+}
+
+int SDLWindow::sizeHeight()
+{
+	return this->mImpl->m_screen_height;
+}
