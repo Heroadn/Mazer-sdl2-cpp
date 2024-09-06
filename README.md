@@ -1,7 +1,2 @@
 # Mazer-sdl2-cpp
-
-![Captura de tela 2022-04-29 114223](https://user-images.githubusercontent.com/36571620/165968277-dacdcceb-9617-4485-8c15-3456983a2ae7.png)
-
-## Build
-- change in "Mazer-sdl/CMakeLists.txt"
-- set(SDL2_PATH -> "Your SDL FOLDER")
+![Teste](https://github.com/user-attachments/assets/c7372251-43e0-4406-b7e6-03e4dbb4ab9a)
