@@ -207,7 +207,7 @@ void SDLWindow::run(IEngine *engine)
 
 		now = mImpl->get_tick();
 		delay = ticks_per_sec - (now - last);
-		mImpl->sleep(delay);
+		//mImpl->sleep(delay);
 	}
 }
 
